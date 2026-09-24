@@ -1,10 +1,13 @@
 using DG.Tweening;
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIWindow : MonoBehaviour
 {
+    [Header("Data")]
+    [SerializeField] private string _id;
+
+    [Header("UI Settings")]
     [SerializeField] private RectTransform _canvasRectTransform;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private bool _hideOnStart;
@@ -14,6 +17,8 @@ public class UIWindow : MonoBehaviour
     [SerializeField] private float hideDuration = 0.5f;
     [SerializeField] private Ease showEase = Ease.OutBack;
     [SerializeField] private Ease hideEase = Ease.InBack;
+
+    public string Id => _id;    
     void Start()
     {
         Initialize();
