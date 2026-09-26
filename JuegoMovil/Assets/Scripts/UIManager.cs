@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private List<UIWindow> _uiWindows;
+
+    public List<UIWindow> UIWindows => _uiWindows;
     void Start()
     {
         
@@ -19,10 +21,15 @@ public class UIManager : MonoBehaviour
     {
         foreach (var window in _uiWindows)
         {
-            if(window.Id ==  windowName)
+            if (window.Id == windowName)
             {
+                Debug.Log($"Showing window: {windowName}");
                 window.Show();
                 break;
+            }
+            else
+            {
+                Debug.LogError("Window not found: " + windowName);
             }
         }
     }
@@ -33,8 +40,13 @@ public class UIManager : MonoBehaviour
         {
             if (window.Id == windowName)
             {
-                window.Show();
+                Debug.Log($"Hiding window: {windowName}");
+                window.Hide();
                 break;
+            }
+            else
+            {
+                Debug.LogError("Window not found: " + windowName);
             }
         }
     }
