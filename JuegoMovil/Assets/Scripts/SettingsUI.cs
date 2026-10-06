@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class SettingsUI : UIWindow
 {
@@ -16,7 +17,22 @@ public class SettingsUI : UIWindow
 
     private void OnVolumeChanged(float value)
     {
-        Debug.Log($"Volume changed to: {value}");
-        // Here you can add code to actually change the game's volume
+        Debug.Log($"Volume changed to: {value}");        
     }
+
+
+
+    [Button("Test Show")]
+    private void TestShow()
+    {
+        Show();
+    }
+
+    [Button("Test Hide")]
+    private void TestHide()
+    {
+        Hide();
+    }
+
+
 }

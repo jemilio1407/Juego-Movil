@@ -1,22 +1,27 @@
-using NUnit.Framework;
-using UnityEngine;
+using System;
 using System.Collections.Generic;
-
+using NaughtyAttributes;
+using UnityEngine;
 public class UIManager : MonoBehaviour
-{
-    [SerializeField] private List<UIWindow> _uiWindows;
-
+{    
+    public static UIManager Instance { get; private set; }
+    [SerializeField] private List<UIWindow> _uiWindows;   
     public List<UIWindow> UIWindows => _uiWindows;
-    void Start()
+
+    
+    private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         
+        DontDestroyOnLoad(this.gameObject);
     }
     
-    void Update()
-    {
-        
-    }
-
     public void ShowWindow(string windowName)
     {
         foreach (var window in _uiWindows)
@@ -33,7 +38,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
-
+    
     public void HideWindow(string windowName)
     {
         foreach (var window in _uiWindows)
@@ -49,5 +54,19 @@ public class UIManager : MonoBehaviour
                 Debug.LogError("Window not found: " + windowName);
             }
         }
+    }
+    
+    public UIWindow GetWindow(string windowName)
+    {
+        foreach (var window in _uiWindows)
+        {
+            if (window.Id == windowName)
+            {
+                return window;
+            }
+        }
+
+        Debug.LogError("Window not found: " + windowName);
+        return null;
     }
 }
