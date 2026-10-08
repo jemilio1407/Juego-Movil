@@ -11,7 +11,7 @@ public class SettingsUI : UIWindow
     public override void Initialize()
     {
         base.Initialize();
-        _volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
+        //_volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
 
     }
 

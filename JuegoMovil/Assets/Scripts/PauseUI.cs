@@ -1,10 +1,8 @@
-using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
 
-public class PopupUI : UIWindow
+public class PauseUI : UIWindow
 {
-
     #region Test Methods
 
     [Button("Test Show")]
@@ -21,5 +19,4 @@ public class PopupUI : UIWindow
 
 
     #endregion
-
 }

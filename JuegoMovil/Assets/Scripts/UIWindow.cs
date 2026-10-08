@@ -1,7 +1,6 @@
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-
 public class UIWindow : MonoBehaviour
 {
     [Header("Data")]
@@ -22,40 +21,53 @@ public class UIWindow : MonoBehaviour
     public RectTransform CanvasRectTransform => _canvasRectTransform;
     public string Id => _id;
 
+    private bool _isShowing = false;
+
     void Start()
-    {
+    {        
         Initialize();
     }
 
+    
     public virtual void Initialize()
     {
         if (_hideOnStart)
         {
             Hide(true);
         }
-    }
+    }    
     public virtual void Show(bool instant = false)
-    {
+    {        
         if (instant)
-        {
+        {            
             _canvasRectTransform.gameObject.SetActive(true);
-        }
+        }        
         else
         {
+            _isShowing = true;
+            _canvasGroup.transform.localScale = Vector3.zero;
             _canvasRectTransform.gameObject.SetActive(true);
             RectTransform rectTransform = _canvasGroup.GetComponent<RectTransform>();
-            rectTransform.DOScale(Vector3.one, showDuration).SetEase(showEase);
+            rectTransform.DOScale(Vector3.one, showDuration).SetEase(showEase).OnComplete(() =>
+            {
+                _isShowing = false;
+            });
         }
     }
-
+    
     public virtual void Hide(bool instant = false)
-    {
+    {        
         if (instant)
         {
             _canvasRectTransform.gameObject.SetActive(false);
-        }
+        }        
         else
         {
+            if (_isShowing)
+            {
+                Debug.Log("Window is currently showing. Cannot hide until the show animation is complete.");
+                return;
+            }
             RectTransform rectTransform = _canvasGroup.GetComponent<RectTransform>();
             rectTransform.DOScale(Vector3.zero, hideDuration).SetEase(hideEase).OnComplete(() =>
             {
@@ -63,4 +75,6 @@ public class UIWindow : MonoBehaviour
             });
         }
     }
+
+
 }
