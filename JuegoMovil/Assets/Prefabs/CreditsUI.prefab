@@ -1105,7 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3425560208164023752}
-  - component: {fileID: 1886295523169811531}
+  - component: {fileID: 5020443861764753360}
   m_Layer: 0
   m_Name: Credits_Panel
   m_TagString: Untagged
@@ -1130,12 +1130,12 @@ RectTransform:
   - {fileID: 1803802537069429632}
   m_Father: {fileID: 9041036455919337650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: -0.0004240882}
+  m_AnchorMax: {x: 1, y: 1.0004241}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1886295523169811531
+--- !u!114 &5020443861764753360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1148,10 +1148,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResponsiveElement
   rectTransform: {fileID: 3425560208164023752}
-  mobileAnchorMin: {x: 0, y: 0}
-  mobileAnchorMax: {x: 1, y: 1}
-  tabletAnchorMin: {x: 0, y: 0}
-  tabletAnchorMax: {x: 0, y: 0}
+  mobileAnchorMin: {x: 0, y: -0.0004240882}
+  mobileAnchorMax: {x: 1, y: 1.0004241}
+  tabletAnchorMin: {x: 0, y: -0.0004240882}
+  tabletAnchorMax: {x: 1, y: 1.0004241}
 --- !u!1 &6328869103628559048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,10 +1622,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2556, y: 1179}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
