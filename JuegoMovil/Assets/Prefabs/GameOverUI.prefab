@@ -1353,3 +1353,4 @@ MonoBehaviour:
   hideDuration: 0.5
   showEase: 27
   hideEase: 26
+  finalScoreText: {fileID: 1770198866503189791}

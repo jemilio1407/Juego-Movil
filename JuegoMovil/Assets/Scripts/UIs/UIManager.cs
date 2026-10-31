@@ -18,8 +18,6 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
-        
-        DontDestroyOnLoad(this.gameObject);
     }
     
     public void ShowWindow(string windowName)
