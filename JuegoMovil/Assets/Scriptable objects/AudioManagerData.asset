@@ -24,4 +24,28 @@ MonoBehaviour:
     loop: 0
     volume: 0
     pitch: 0
+    audioType: 1
+  - name: click
+    clip: {fileID: 8300000, guid: da0e450e8c97d414787e63bba0f58e0c, type: 3}
+    loop: 0
+    volume: 0
+    pitch: 0
     audioType: 0
+  - name: click
+    clip: {fileID: 8300000, guid: 847ed44945bde154f9f2773cc2ef726e, type: 3}
+    loop: 0
+    volume: 0
+    pitch: 0
+    audioType: 1
+  - name: click
+    clip: {fileID: 8300000, guid: 2d9dd146dde954248a751ebfba7c15b4, type: 3}
+    loop: 0
+    volume: 0
+    pitch: 0
+    audioType: 1
+  - name: click
+    clip: {fileID: 8300000, guid: 36a034aa964c62344ae949373b6085a8, type: 3}
+    loop: 0
+    volume: 0
+    pitch: 0
+    audioType: 1

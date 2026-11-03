@@ -196,10 +196,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2556, y: 1179}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1041,6 +1041,7 @@ GameObject:
   - component: {fileID: 687903421263395820}
   - component: {fileID: 534566475491317213}
   - component: {fileID: 5064056551717701349}
+  - component: {fileID: 6774257444397048544}
   m_Layer: 0
   m_Name: Buttons_Container
   m_TagString: Untagged
@@ -1108,6 +1109,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &6774257444397048544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7892087250156375790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07f3adc36f16318409cd7eb771ada430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ResponsiveElement
+  rectTransform: {fileID: 687903421263395820}
+  mobileAnchorMin: {x: 0.48043817, y: -0.0004240882}
+  mobileAnchorMax: {x: 0.5195618, y: 1.0004241}
+  tabletAnchorMin: {x: 0.48043817, y: -0.0004240882}
+  tabletAnchorMax: {x: 0.5195618, y: 1.0004241}
 --- !u!1 &9048806465358825707
 GameObject:
   m_ObjectHideFlags: 0
