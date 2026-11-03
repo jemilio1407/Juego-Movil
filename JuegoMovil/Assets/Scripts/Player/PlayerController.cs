@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using Dino.Utility.Audio;
 
 public class PlayerController : MonoBehaviour
 {
@@ -19,16 +21,23 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
+
         HandleInput();
         MovePlayer();
     }
 
     private void HandleInput()
     {
-        // Input móvil
+#if UNITY_EDITOR
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
+#endif
+
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
+
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject(touch.fingerId)) continue;
 
             if (touch.phase == TouchPhase.Began)
             {
@@ -43,6 +52,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+#if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
             if (Input.mousePosition.x < Screen.width / 2f)
@@ -54,6 +64,7 @@ public class PlayerController : MonoBehaviour
                 TryShoot();
             }
         }
+#endif
     }
 
     private void MovePlayer()
@@ -71,6 +82,11 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
             nextFireTime = Time.time + fireRate;
+
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlaySound("Shoot");
+            }
         }
     }
 }
