@@ -19,33 +19,21 @@ MonoBehaviour:
   _ambienceAudioMixerGroup: {fileID: -3975696105739579948, guid: 4bc29bfb0bbc5ed469f63b07eb33c75c, type: 2}
   _ambienceVolumeParameterName: AmbienceVolume
   audioData:
-  - name: click
+  - name: click1
     clip: {fileID: 8300000, guid: 6c108aaaa0bea23479a162236a970ef7, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
+    volume: 2
+    pitch: 1
     audioType: 1
-  - name: click
+  - name: BGM
     clip: {fileID: 8300000, guid: da0e450e8c97d414787e63bba0f58e0c, type: 3}
-    loop: 0
-    volume: 0
-    pitch: 0
+    loop: 1
+    volume: 1
+    pitch: 1
     audioType: 0
-  - name: click
+  - name: Shoot
     clip: {fileID: 8300000, guid: 847ed44945bde154f9f2773cc2ef726e, type: 3}
     loop: 0
-    volume: 0
-    pitch: 0
-    audioType: 1
-  - name: click
-    clip: {fileID: 8300000, guid: 2d9dd146dde954248a751ebfba7c15b4, type: 3}
-    loop: 0
-    volume: 0
-    pitch: 0
-    audioType: 1
-  - name: click
-    clip: {fileID: 8300000, guid: 36a034aa964c62344ae949373b6085a8, type: 3}
-    loop: 0
-    volume: 0
-    pitch: 0
+    volume: 1
+    pitch: 1
     audioType: 1

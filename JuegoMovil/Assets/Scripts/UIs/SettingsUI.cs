@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using NaughtyAttributes;
 using System.Collections;
 using Dino.Utility.Audio;
-using AudioType = Dino.Utility.Audio.AudioType; 
+using AudioType = Dino.Utility.Audio.AudioType;
 
 public class SettingsUI : UIWindow
 {
@@ -12,9 +12,9 @@ public class SettingsUI : UIWindow
     [SerializeField] private Toggle sfxToggle;
 
     [Header("Switch Visuals (Sprites)")]
-    [SerializeField] private Image musicSwitchImage; 
-    [SerializeField] private Image sfxSwitchImage;  
-    [SerializeField] private Sprite switchOnSprite; 
+    [SerializeField] private Image musicSwitchImage;
+    [SerializeField] private Image sfxSwitchImage;
+    [SerializeField] private Sprite switchOnSprite;
     [SerializeField] private Sprite switchOffSprite;
 
     private void Awake()
@@ -44,25 +44,38 @@ public class SettingsUI : UIWindow
         yield return null;
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.UpdateAudioMixerGroupVolume(musicOn ? 1f : 0.0001f, AudioType.Music);
             AudioManager.Instance.UpdateAudioMixerGroupVolume(sfxOn ? 1f : 0.0001f, AudioType.SFX);
+
+            if (!musicOn)
+            {
+                AudioManager.Instance.StopSound("BGM");
+            }
         }
     }
 
     private void OnMusicToggleChanged(bool isOn)
     {
         PlayerPrefs.SetInt("MusicOn", isOn ? 1 : 0);
+        PlayerPrefs.Save();
         UpdateSwitchVisual(musicSwitchImage, isOn);
 
         if (AudioManager.Instance != null)
         {
-            AudioManager.Instance.UpdateAudioMixerGroupVolume(isOn ? 1f : 0.0001f, AudioType.Music);
+            if (isOn)
+            {
+                AudioManager.Instance.PlaySound("BGM");
+            }
+            else
+            {
+                AudioManager.Instance.StopSound("BGM");
+            }
         }
     }
 
     private void OnSFXToggleChanged(bool isOn)
     {
         PlayerPrefs.SetInt("SFXOn", isOn ? 1 : 0);
+        PlayerPrefs.Save();
         UpdateSwitchVisual(sfxSwitchImage, isOn);
 
         if (AudioManager.Instance != null)
