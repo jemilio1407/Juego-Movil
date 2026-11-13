@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 1d6af90536854504093ad28e8330ada1
+guid: ae63db84771489543bd599fd47da4b23
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2311659948842064771
-    second: Player_0
+      213: 4486071779413374242
+    second: normal_fly3_0
+  - first:
+      213: 6059109485700793761
+    second: normal_fly3_1
+  - first:
+      213: 5214167450397827350
+    second: normal_fly3_2
+  - first:
+      213: -9185460968726430819
+    second: normal_fly3_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
-    sRGBTexture: 0
+    sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
     borderMipMap: 0
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -113,133 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: normal_fly3_0
       rect:
         serializedVersion: 2
-        x: 291
-        y: 719
-        width: 482
-        height: 510
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d7465c336855befd0800000000000000
-      internalID: -2311659948842064771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_1
-      rect:
-        serializedVersion: 2
-        x: 2089
-        y: 677
-        width: 433
-        height: 531
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: deaccd1b5893e1e4faad047780352a9e
-      internalID: -1838040033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_2
-      rect:
-        serializedVersion: 2
-        x: 1114
-        y: 564
-        width: 563
-        height: 668
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ad9d5fa72538d18428ec4585caac4c9b
-      internalID: -545928330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_3
-      rect:
-        serializedVersion: 2
-        x: 449
-        y: 71
-        width: 504
-        height: 472
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ebe3485d7b93e84d856e0ff71456eb9
-      internalID: -1673725367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_4
-      rect:
-        serializedVersion: 2
-        x: 976
-        y: 371
-        width: 169
-        height: 61
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8df307dc617a34489e76a16d00a8b33
-      internalID: -1689798712
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_5
-      rect:
-        serializedVersion: 2
-        x: 1774
-        y: 72
-        width: 498
-        height: 462
+        x: 1
+        y: 1
+        width: 247
+        height: 197
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ffac65aadacce0e408f51d8b65d8e202
-      internalID: -1502599080
+      spriteID: 225b6d0e38ab14e30800000000000000
+      internalID: 4486071779413374242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: normal_fly3_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 184
+        width: 35
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5456689f7461450800000000000000
+      internalID: 6059109485700793761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: normal_fly3_2
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 178
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 611ed589ba17c5840800000000000000
+      internalID: 5214167450397827350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: normal_fly3_3
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 141
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d9b78d46aefa68080800000000000000
+      internalID: -9185460968726430819
       vertices: []
       indices: 
       edges: []
@@ -248,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 12166c223251a354d8dd5357bafda225
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -256,16 +221,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Player_0: -2311659948842064771
-      Player_1: -1838040033
-      Player_2: -545928330
-      Player_3: -1673725367
-      Player_4: -1689798712
-      Player_5: -1502599080
+      normal_fly3_0: 4486071779413374242
+      normal_fly3_1: 6059109485700793761
+      normal_fly3_2: 5214167450397827350
+      normal_fly3_3: -9185460968726430819
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
