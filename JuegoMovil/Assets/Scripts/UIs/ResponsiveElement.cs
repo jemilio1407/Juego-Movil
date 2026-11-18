@@ -14,31 +14,51 @@ public class ResponsiveElement : MonoBehaviour
     [SerializeField] private Vector2 tabletAnchorMin = new Vector2(0, 0);
     [SerializeField] private Vector2 tabletAnchorMax = new Vector2(0, 0);
 
-    ResponsiveManager _responsiveManager;
+    private ResponsiveManager _responsiveManager;
+    private Vector2 _lastScreenSize;
 
-    void Start()
+    private void Start()
     {
         _responsiveManager = ResponsiveManager.Instance;
-        _responsiveManager.OnScreenSizeChanged.AddListener(UpdateAnchors);
+        if (_responsiveManager != null)
+            _responsiveManager.OnScreenSizeChanged.AddListener(UpdateAnchors);
+
+        _lastScreenSize = new Vector2(Screen.width, Screen.height);
         UpdateAnchors();
     }
 
-
-    public void UpdateAnchors()
+    private void Update()
     {
-        if (_responsiveManager == null) return;
+        if (_responsiveManager != null) return;
 
-        if (_responsiveManager.CurrentDeviceType == DeviceType.Mobile)
+        Vector2 currentScreenSize = new Vector2(Screen.width, Screen.height);
+        if (_lastScreenSize != currentScreenSize)
         {
-            SetMobileAnchors();
-        }
-        else if (_responsiveManager.CurrentDeviceType == DeviceType.Tablet)
-        {
-            SetTabletAnchors();
+            _lastScreenSize = currentScreenSize;
+            UpdateAnchors();
         }
     }
 
+    public void UpdateAnchors()
+    {
+        if (rectTransform == null) return;
 
+        DeviceType deviceType = _responsiveManager != null
+            ? _responsiveManager.CurrentDeviceType
+            : GetDeviceType(Screen.width, Screen.height);
+
+        if (deviceType == DeviceType.Mobile)
+            SetMobileAnchors();
+        else
+            SetTabletAnchors();
+    }
+
+    private static DeviceType GetDeviceType(int width, int height)
+    {
+        int minDimension = Mathf.Min(width, height);
+        float aspectRatio = (float)Mathf.Max(width, height) / minDimension;
+        return minDimension >= 600 && aspectRatio < 2f ? DeviceType.Tablet : DeviceType.Mobile;
+    }
     private void SetTabletAnchors()
     {
         rectTransform.anchorMin = tabletAnchorMin;

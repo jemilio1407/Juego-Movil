@@ -26,7 +26,7 @@ MonoBehaviour:
     pitch: 1
     audioType: 1
   - name: BGM
-    clip: {fileID: 8300000, guid: da0e450e8c97d414787e63bba0f58e0c, type: 3}
+    clip: {fileID: 8300000, guid: 28fb50aafb11ea340beb68432857dcd8, type: 3}
     loop: 1
     volume: 1
     pitch: 1
