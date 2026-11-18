@@ -529,7 +529,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Gemini AI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
   m_sharedMaterial: {fileID: 237482846566644024, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name
+  m_text: Javier Alvarez
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
   m_sharedMaterial: {fileID: 237482846566644024, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
@@ -1354,7 +1354,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Music
+  m_text: DEV
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
   m_sharedMaterial: {fileID: 237482846566644024, guid: 965e14cbb82c19d43b42e763959d9914, type: 2}
