@@ -398,6 +398,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PauseUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2386253788488908926, guid: 1e9d7a295b438fa43946ca0d21b94aaa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2459731967122255496, guid: 1e9d7a295b438fa43946ca0d21b94aaa, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

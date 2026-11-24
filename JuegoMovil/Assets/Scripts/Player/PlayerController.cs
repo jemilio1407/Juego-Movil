@@ -65,6 +65,14 @@ public class PlayerController : MonoBehaviour
     private void UpdateMovementAnimation()
     {
         if (Time.time < animationLockUntil) return;
+
+        bool reachedUpperLimit = isMovingUp && transform.position.y >= maxY;
+        if (reachedUpperLimit)
+        {
+            PlayAnimation("Player_Idle");
+            return;
+        }
+
         PlayAnimation(isMovingUp ? "Player_Fly" : "Player_Fall");
     }
 
