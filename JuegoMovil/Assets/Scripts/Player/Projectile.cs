@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private float lifetime = 3f;
 
+    private bool hasHit;
+
     private void Start()
     {
         Destroy(gameObject, lifetime);
@@ -19,9 +21,12 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (hasHit) return;
+
+        if (other.CompareTag("Enemy") && other.TryGetComponent(out Enemy enemy))
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            hasHit = true;
+            enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

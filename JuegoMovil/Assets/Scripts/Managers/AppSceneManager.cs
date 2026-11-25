@@ -8,6 +8,12 @@ public class AppSceneManager : MonoBehaviour
     [SerializeField] private string gameplaySceneName = "Gameplay";
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
     private void Start()
     {
         bool isMusicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;

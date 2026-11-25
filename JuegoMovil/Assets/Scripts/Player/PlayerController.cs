@@ -4,6 +4,12 @@ using Dino.Utility.Audio;
 
 public class PlayerController : MonoBehaviour
 {
+    private static readonly int IdleStateHash = Animator.StringToHash("Player_Idle");
+    private static readonly int FlyStateHash = Animator.StringToHash("Player_Fly");
+    private static readonly int FallStateHash = Animator.StringToHash("Player_Fall");
+    private static readonly int ShootStateHash = Animator.StringToHash("Player_Shoot");
+    private static readonly int HitStateHash = Animator.StringToHash("Player_Hit");
+
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float fallSpeed = 5f;
@@ -19,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool isMovingUp;
     private Animator animator;
     private float animationLockUntil;
-    private string currentAnimation;
+    private int currentAnimationHash;
 
     private void Awake() => animator = GetComponent<Animator>();
 
@@ -69,11 +75,11 @@ public class PlayerController : MonoBehaviour
         bool reachedUpperLimit = isMovingUp && transform.position.y >= maxY;
         if (reachedUpperLimit)
         {
-            PlayAnimation("Player_Idle");
+            PlayAnimation(IdleStateHash);
             return;
         }
 
-        PlayAnimation(isMovingUp ? "Player_Fly" : "Player_Fall");
+        PlayAnimation(isMovingUp ? FlyStateHash : FallStateHash);
     }
 
     private void TryShoot()
@@ -81,22 +87,22 @@ public class PlayerController : MonoBehaviour
         if (Time.time < nextFireTime) return;
         Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         nextFireTime = Time.time + fireRate;
-        PlayLockedAnimation("Player_Shoot", 0.24f);
+        PlayLockedAnimation(ShootStateHash, 0.24f);
         if (AudioManager.Instance != null) AudioManager.Instance.PlaySound("Shoot");
     }
 
-    public void PlayHitAnimation() => PlayLockedAnimation("Player_Hit", 0.36f);
+    public void PlayHitAnimation() => PlayLockedAnimation(HitStateHash, 0.36f);
 
-    private void PlayLockedAnimation(string state, float duration)
+    private void PlayLockedAnimation(int stateHash, float duration)
     {
         animationLockUntil = Time.time + duration;
-        PlayAnimation(state);
+        PlayAnimation(stateHash);
     }
 
-    private void PlayAnimation(string state)
+    private void PlayAnimation(int stateHash)
     {
-        if (animator == null || currentAnimation == state) return;
-        animator.Play(state, 0, 0f);
-        currentAnimation = state;
+        if (animator == null || currentAnimationHash == stateHash) return;
+        animator.Play(stateHash, 0, 0f);
+        currentAnimationHash = stateHash;
     }
 }

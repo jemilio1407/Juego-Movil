@@ -24,34 +24,28 @@ public class UIManager : MonoBehaviour
     {
         foreach (var window in _uiWindows)
         {
-            if (window.Id == windowName)
+            if (window != null && window.Id == windowName)
             {
-                Debug.Log($"Showing window: {windowName}");
                 window.Show();
-                break;
-            }
-            else
-            {
-                Debug.LogError("Window not found: " + windowName);
+                return;
             }
         }
+
+        Debug.LogError("Window not found: " + windowName);
     }
     
     public void HideWindow(string windowName)
     {
         foreach (var window in _uiWindows)
         {
-            if (window.Id == windowName)
+            if (window != null && window.Id == windowName)
             {
-                Debug.Log($"Hiding window: {windowName}");
                 window.Hide();
-                break;
-            }
-            else
-            {
-                Debug.LogError("Window not found: " + windowName);
+                return;
             }
         }
+
+        Debug.LogError("Window not found: " + windowName);
     }
     
     public UIWindow GetWindow(string windowName)

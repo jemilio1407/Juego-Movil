@@ -15,7 +15,8 @@ public class ResponsiveElement : MonoBehaviour
     [SerializeField] private Vector2 tabletAnchorMax = new Vector2(0, 0);
 
     private ResponsiveManager _responsiveManager;
-    private Vector2 _lastScreenSize;
+    private int _lastScreenWidth;
+    private int _lastScreenHeight;
 
     private void Start()
     {
@@ -23,18 +24,27 @@ public class ResponsiveElement : MonoBehaviour
         if (_responsiveManager != null)
             _responsiveManager.OnScreenSizeChanged.AddListener(UpdateAnchors);
 
-        _lastScreenSize = new Vector2(Screen.width, Screen.height);
+        _lastScreenWidth = Screen.width;
+        _lastScreenHeight = Screen.height;
         UpdateAnchors();
+    }
+
+    private void OnDestroy()
+    {
+        if (_responsiveManager != null)
+            _responsiveManager.OnScreenSizeChanged.RemoveListener(UpdateAnchors);
     }
 
     private void Update()
     {
         if (_responsiveManager != null) return;
 
-        Vector2 currentScreenSize = new Vector2(Screen.width, Screen.height);
-        if (_lastScreenSize != currentScreenSize)
+        int width = Screen.width;
+        int height = Screen.height;
+        if (_lastScreenWidth != width || _lastScreenHeight != height)
         {
-            _lastScreenSize = currentScreenSize;
+            _lastScreenWidth = width;
+            _lastScreenHeight = height;
             UpdateAnchors();
         }
     }

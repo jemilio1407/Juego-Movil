@@ -37,10 +37,9 @@ namespace Dino.Utility.Audio
         #region private fields
 
         private GameObject _soundsContainer;
-        private List<AudioSource> _audioSources = new List<AudioSource>();
-
-        private List<AudioData> _sfxAudioData = new List<AudioData>();
-        private List<AudioData> _musicAudioData = new List<AudioData>();
+        private readonly Dictionary<string, AudioData> _audioDataLookup = new Dictionary<string, AudioData>();
+        private readonly Dictionary<AudioClip, AudioSource> _audioSourceLookup = new Dictionary<AudioClip, AudioSource>();
+        private bool _isInitialized;
 
         #endregion
 
@@ -62,46 +61,58 @@ namespace Dino.Utility.Audio
             }
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
-        }
-
-        private void Start()
-        {
             Initialize();
         }
 
-        private void Update()
-        {
-           
-            
-        }
-
-        
         #endregion
 
         #region private methods
-        
-       
-
-        private AudioSource FindAudioSource(AudioClip clip)
-        {
-            return _audioSources.Find(x => x.clip == clip);
-        }
 
         private void Initialize()
         {
+            if (_isInitialized) return;
+            _isInitialized = true;
+
             _soundsContainer = new GameObject("SoundsContainer");
-            _audioSources = new List<AudioSource>();
             _soundsContainer.transform.SetParent(transform);
-            PrepareLists();
+
+            _audioDataLookup.Clear();
+            _audioSourceLookup.Clear();
+
+            if (_audioManagerData != null && _audioManagerData.audioData != null)
+            {
+                for (int i = 0; i < _audioManagerData.audioData.Count; i++)
+                {
+                    AudioData data = _audioManagerData.audioData[i];
+                    if (data != null && !string.IsNullOrEmpty(data.name) && !_audioDataLookup.ContainsKey(data.name))
+                    {
+                        _audioDataLookup.Add(data.name, data);
+                    }
+                }
+            }
         }
 
-        
-
-        private void PrepareLists()
+        private AudioData GetAudioData(string soundName)
         {
-            _sfxAudioData = _audioManagerData.audioData.FindAll(x => x.audioType == AudioType.SFX);
-            _musicAudioData = _audioManagerData.audioData.FindAll(x => x.audioType == AudioType.Music);
+            if (!_isInitialized) Initialize();
+
+            if (string.IsNullOrEmpty(soundName)) return null;
+            if (_audioDataLookup.TryGetValue(soundName, out AudioData cached)) return cached;
+
+            if (_audioManagerData != null && _audioManagerData.audioData != null)
+            {
+                for (int i = 0; i < _audioManagerData.audioData.Count; i++)
+                {
+                    AudioData data = _audioManagerData.audioData[i];
+                    if (data != null && data.name == soundName)
+                    {
+                        _audioDataLookup[soundName] = data;
+                        return data;
+                    }
+                }
+            }
+
+            return null;
         }
 
         private void SetAudioInMixerGroup(AudioSource audioSource, AudioType audioType)
@@ -125,16 +136,14 @@ namespace Dino.Utility.Audio
 
         public void PlaySound(string soundName)
         {
-            AudioData audioData = _audioManagerData.audioData.Find(x => x.name == soundName);
-            if (audioData == null)
+            AudioData audioData = GetAudioData(soundName);
+            if (audioData == null || audioData.clip == null)
             {
                 Debug.LogWarning("Sound: " + soundName + " not found!");
                 return;
             }
 
-            AudioSource audioSource = FindAudioSource(audioData.clip);
-
-            if (audioSource == null)
+            if (!_audioSourceLookup.TryGetValue(audioData.clip, out AudioSource audioSource) || audioSource == null)
             {
                 GameObject go = new GameObject("AS : " + audioData.name);
                 audioSource = go.AddComponent<AudioSource>();
@@ -145,7 +154,7 @@ namespace Dino.Utility.Audio
                 audioSource.pitch = audioData.pitch;
                 audioSource.Play();
                 SetAudioInMixerGroup(audioSource, audioData.audioType);
-                _audioSources.Add(audioSource);
+                _audioSourceLookup[audioData.clip] = audioSource;
             }
             else
             {
@@ -155,15 +164,14 @@ namespace Dino.Utility.Audio
 
         public void StopSound(string soundName)
         {
-            AudioData audioData = _audioManagerData.audioData.Find(x => x.name == soundName);
-            if (audioData == null)
+            AudioData audioData = GetAudioData(soundName);
+            if (audioData == null || audioData.clip == null)
             {
                 Debug.LogWarning("Sound: " + soundName + " not found!");
                 return;
             }
 
-            AudioSource audioSource = FindAudioSource(audioData.clip);
-            if (audioSource != null)
+            if (_audioSourceLookup.TryGetValue(audioData.clip, out AudioSource audioSource) && audioSource != null)
             {
                 audioSource.Stop();
             }
